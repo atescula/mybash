@@ -49,8 +49,8 @@ if [[ $iatest -gt 0 ]]; then bind "set completion-ignore-case on"; fi
 if [[ $iatest -gt 0 ]]; then bind "set show-all-if-ambiguous On"; fi
 
 # Set the default editor
-export EDITOR=nvim
-export VISUAL=nvim
+export EDITOR=nano
+export VISUAL=nano
 alias pico='edit'
 alias spico='sedit'
 alias nano='edit'
@@ -58,15 +58,15 @@ alias snano='sedit'
 alias vim='nvim'
 
 # Replace batcat with cat on Fedora as batcat is not available as a RPM in any form
-if command -v lsb_release > /dev/null; then
-    DISTRIBUTION=$(lsb_release -si)
+#if command -v lsb_release > /dev/null; then
+#DISTRIBUTION=$(lsb_release -si)
 
-    if [ "$DISTRIBUTION" = "Fedora" ]; then
-        alias cat='bat'
-    else
-        alias cat='batcat'
-    fi
-fi
+    #if [ "$DISTRIBUTION" = "Fedora" ]; then
+     #   alias cat='bat'
+    #else
+     #   alias cat='batcat'
+    #fi
+#fi
 
 # To have colors for ls and all grep commands such as grep, egrep and zgrep
 export CLICOLOR=1
@@ -506,7 +506,7 @@ function whatsmyip ()
 	# Internal IP Lookup.
 	if [ -e /sbin/ip ];
 	then
-		echo -n "Internal IP: " ; /sbin/ip addr show wlan0 | grep "inet " | awk -F: '{print $1}' | awk '{print $2}'
+		echo -n "Internal IP: " ; /sbin/ip addr show enp5s0 | grep "inet " | awk -F: '{print $1}' | awk '{print $2}'
 	else
 		echo -n "Internal IP: " ; /sbin/ifconfig wlan0 | grep "inet " | awk -F: '{print $1} |' | awk '{print $2}'
 	fi
